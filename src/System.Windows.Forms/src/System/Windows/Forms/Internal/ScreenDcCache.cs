@@ -69,16 +69,16 @@ namespace System.Windows.Forms
         /// </summary>
         public ScreenDcScope Acquire()
         {
-            IntPtr item;
+            // IntPtr item;
 
-            for (int i = 0; i < _itemsCache.Length; i++)
-            {
-                item = Interlocked.Exchange(ref _itemsCache[i], IntPtr.Zero);
-                if (item != IntPtr.Zero)
-                {
-                    return new ScreenDcScope(this, (Gdi32.HDC)item);
-                }
-            }
+            // for (int i = 0; i < _itemsCache.Length; i++)
+            // {
+            //     item = Interlocked.Exchange(ref _itemsCache[i], IntPtr.Zero);
+            //     if (item != IntPtr.Zero)
+            //     {
+            //         return new ScreenDcScope(this, (Gdi32.HDC)item);
+            //     }
+            // }
 
             // Didn't find anything in the cache, create a new HDC
             return CreateNew();
